@@ -1,0 +1,30 @@
+:root {
+  --primary-color: #007bff;
+  --background-light: #ffffff;
+  --background-dark: #343a40;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+}
+
+[data-theme='dark'] {
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+}
+
+body {
+  background: var(--background-light);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

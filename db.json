@@ -1,0 +1,385 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "title": "Spaghetti Bolognese",
+      "description": "Classic Italian pasta dish",
+      "ingredients": [
+        "spaghetti",
+        "ground beef",
+        "tomato sauce"
+      ],
+      "instructions": "Cook pasta, prepare sauce, combine.",
+      "cookingTime": 45,
+      "servings": 4,
+      "category": "Dinner",
+      "rating": 4.5,
+      "image": "spaghetti.png",
+      "nutritionalInfo": {
+        "calories": 600,
+        "protein": 25,
+        "fat": 15,
+        "carbs": 80
+      },
+      "comments": [
+        {
+          "username": "User1",
+          "text": "Delicious!",
+          "timestamp": "2025-06-01T10:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Avocado Toast",
+      "description": "Simple and healthy breakfast",
+      "ingredients": [
+        "bread",
+        "avocado",
+        "lemon",
+        "salt",
+        "pepper"
+      ],
+      "instructions": "Toast bread, mash avocado, spread and season.",
+      "cookingTime": 10,
+      "servings": 1,
+      "category": "Breakfast",
+      "rating": 4.2,
+      "image": "Avocado Toast.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Chicken Curry",
+      "description": "Spicy Indian-style chicken curry",
+      "ingredients": [
+        "chicken",
+        "onion",
+        "tomato",
+        "spices"
+      ],
+      "instructions": "Cook onions, add chicken and spices, simmer.",
+      "cookingTime": 50,
+      "servings": 4,
+      "category": "Dinner",
+      "rating": 4.7,
+      "image": "Chicken Curry.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Pancakes",
+      "description": "Fluffy pancakes with maple syrup",
+      "ingredients": [
+        "flour",
+        "milk",
+        "eggs",
+        "baking powder",
+        "syrup"
+      ],
+      "instructions": "Mix batter, cook on griddle, serve with syrup.",
+      "cookingTime": 20,
+      "servings": 3,
+      "category": "Breakfast",
+      "rating": 4.6,
+      "image": "Pancakes.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Grilled Salmon",
+      "description": "Lemon herb grilled salmon",
+      "ingredients": [
+        "salmon",
+        "lemon",
+        "herbs",
+        "olive oil"
+      ],
+      "instructions": "Marinate salmon, grill for 10 mins.",
+      "cookingTime": 20,
+      "servings": 2,
+      "category": "Lunch",
+      "rating": 4.8,
+      "image": "Grilled Salmon.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Greek Salad",
+      "description": "Refreshing salad with feta cheese",
+      "ingredients": [
+        "tomato",
+        "cucumber",
+        "onion",
+        "feta",
+        "olives"
+      ],
+      "instructions": "Chop ingredients, mix and serve chilled.",
+      "cookingTime": 15,
+      "servings": 2,
+      "category": "Lunch",
+      "rating": 4.3,
+      "image": "Greek Salad.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Sushi Rolls",
+      "description": "Homemade sushi with rice and fish",
+      "ingredients": [
+        "sushi rice",
+        "nori",
+        "fish",
+        "vegetables"
+      ],
+      "instructions": "Roll rice and fillings in nori, slice.",
+      "cookingTime": 60,
+      "servings": 4,
+      "category": "Dinner",
+      "rating": 4.9,
+      "image": "Sushi Rolls.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Chocolate Cake",
+      "description": "Rich and moist chocolate cake",
+      "ingredients": [
+        "flour",
+        "cocoa powder",
+        "eggs",
+        "butter",
+        "sugar"
+      ],
+      "instructions": "Mix and bake at 180°C for 30 mins.",
+      "cookingTime": 45,
+      "servings": 8,
+      "category": "Dessert",
+      "rating": 4.9,
+      "image": "Chocolate Cake.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Caesar Salad",
+      "description": "Classic salad with creamy dressing",
+      "ingredients": [
+        "romaine",
+        "croutons",
+        "parmesan",
+        "dressing"
+      ],
+      "instructions": "Mix all ingredients and serve chilled.",
+      "cookingTime": 10,
+      "servings": 2,
+      "category": "Lunch",
+      "rating": 4.1,
+      "image": "Caesar Salad.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Pizza Margherita",
+      "description": "Traditional Italian pizza",
+      "ingredients": [
+        "pizza dough",
+        "tomato sauce",
+        "mozzarella",
+        "basil"
+      ],
+      "instructions": "Top dough and bake at 220°C for 15 mins.",
+      "cookingTime": 30,
+      "servings": 4,
+      "category": "Dinner",
+      "rating": 4.8,
+      "image": "Pizza Margherita.jpg"
+    },
+    {
+      "id": "11",
+      "title": "Ramen",
+      "description": "Japanese noodle soup with toppings",
+      "ingredients": [
+        "noodles",
+        "broth",
+        "egg",
+        "meat",
+        "vegetables"
+      ],
+      "instructions": "Boil broth, cook noodles, assemble bowl.",
+      "cookingTime": 40,
+      "servings": 2,
+      "category": "Dinner",
+      "rating": 4.6,
+      "image": "Ramen.jpg"
+    },
+    {
+      "id": "12",
+      "title": "Fruit Bowl",
+      "description": "Colorful bowl of fresh fruits",
+      "ingredients": [
+        "banana",
+        "berries",
+        "kiwi",
+        "melon"
+      ],
+      "instructions": "Cut and mix fruits in a bowl.",
+      "cookingTime": 10,
+      "servings": 2,
+      "category": "Dessert",
+      "rating": 4.2,
+      "image": "Fruit Bowl.jpg"
+    },
+    {
+      "id": "13",
+      "title": "Burrito Bowl",
+      "description": "Mexican-style bowl with rice and beans",
+      "ingredients": [
+        "rice",
+        "beans",
+        "meat",
+        "salsa",
+        "guacamole"
+      ],
+      "instructions": "Layer all ingredients in a bowl.",
+      "cookingTime": 30,
+      "servings": 2,
+      "category": "Lunch",
+      "rating": 4.5,
+      "image": "Burrito Bowl.jpg"
+    },
+    {
+      "id": "14",
+      "title": "Steak",
+      "description": "Grilled beef steak with garlic butter",
+      "ingredients": [
+        "beef steak",
+        "garlic",
+        "butter",
+        "herbs"
+      ],
+      "instructions": "Sear steak and top with garlic butter.",
+      "cookingTime": 25,
+      "servings": 2,
+      "category": "Dinner",
+      "rating": 4.9,
+      "image": "Steak.jpg"
+    },
+    {
+      "id": "15",
+      "title": "Smoothie Bowl",
+      "description": "Blended fruits with granola topping",
+      "ingredients": [
+        "banana",
+        "berries",
+        "yogurt",
+        "granola"
+      ],
+      "instructions": "Blend and top with fruits and seeds.",
+      "cookingTime": 10,
+      "servings": 1,
+      "category": "Breakfast",
+      "rating": 4.4,
+      "image": "Smoothie Bowl.jpg"
+    },
+    {
+      "id": "16",
+      "title": "Mac and Cheese",
+      "description": "Creamy cheesy pasta dish",
+      "ingredients": [
+        "macaroni",
+        "cheese",
+        "milk",
+        "butter"
+      ],
+      "instructions": "Boil pasta, mix cheese sauce, combine.",
+      "cookingTime": 25,
+      "servings": 3,
+      "category": "Lunch",
+      "rating": 4.3,
+      "image": "Mac and Cheese.jpg"
+    },
+    {
+      "id": "17",
+      "title": "Pad Thai",
+      "description": "Stir-fried Thai noodles",
+      "ingredients": [
+        "rice noodles",
+        "shrimp",
+        "egg",
+        "peanuts",
+        "bean sprouts"
+      ],
+      "instructions": "Stir-fry ingredients with sauce and serve hot.",
+      "cookingTime": 35,
+      "servings": 2,
+      "category": "Dinner",
+      "rating": 4.7,
+      "image": "Pad Thai.jpg"
+    },
+    {
+      "id": "18",
+      "title": "French Toast",
+      "description": "Bread soaked in egg and milk, then fried",
+      "ingredients": [
+        "bread",
+        "egg",
+        "milk",
+        "cinnamon",
+        "syrup"
+      ],
+      "instructions": "Dip bread and cook on pan, add toppings.",
+      "cookingTime": 15,
+      "servings": 2,
+      "category": "Breakfast",
+      "rating": 4.4,
+      "image": "French Toast.jpg"
+    },
+    {
+      "id": "19",
+      "title": "Ice Cream Sundae",
+      "description": "Ice cream topped with fruits and sauce",
+      "ingredients": [
+        "ice cream",
+        "chocolate sauce",
+        "berries",
+        "nuts"
+      ],
+      "instructions": "Scoop ice cream, add toppings.",
+      "cookingTime": 5,
+      "servings": 2,
+      "category": "Dessert",
+      "rating": 4.6,
+      "image": "Ice Cream Sundae.jpg"
+    },
+    {
+      "id": "20",
+      "title": "Veggie Stir Fry",
+      "description": "Quick sautéed vegetables with sauce",
+      "ingredients": [
+        "broccoli",
+        "carrots",
+        "bell pepper",
+        "soy sauce",
+        "garlic"
+      ],
+      "instructions": "Stir-fry vegetables and serve with rice.",
+      "cookingTime": 20,
+      "servings": 2,
+      "category": "Lunch",
+      "rating": 4.3,
+      "image": "Veggie Stir Fry.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "testuser",
+      "email": "test@example.com",
+      "password": "password123",
+      "profilePicture": "https://example.com/avatar.jpg",
+      "favorites": [],
+      "dietaryPreferences": []
+    },
+    {
+      "id": "a501",
+      "username": "test",
+      "email": "test@gmail.com",
+      "password": "12345678",
+      "profilePicture": "",
+      "favorites": [],
+      "dietaryPreferences": []
+    }
+  ]
+}
