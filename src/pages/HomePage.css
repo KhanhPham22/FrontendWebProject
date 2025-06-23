@@ -1,3 +1,69 @@
+.navbar {
+  background: linear-gradient(to right, #0077b6, #00b4d8) !important;
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.navbar-brand .text-success {
+  color: #90e0ef !important;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  margin-left: 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #caf0f8 !important;
+}
+
+.btn-outline-success {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-outline-success:hover {
+  background-color: #90e0ef;
+  color: #0077b6;
+}
+
+.btn-success {
+  background-color: #90e0ef;
+  border-color: #90e0ef;
+  color: #0077b6;
+}
+
+.btn-success:hover {
+  background-color: #caf0f8;
+  border-color: #caf0f8;
+}
+
+.btn-outline-danger {
+  color: #ffffff;
+  border-color: #ff6b6b;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 .home-container {
   padding: 30px;
   background: linear-gradient(to right, #f0f4f8, #e0f7fa);
@@ -22,11 +88,56 @@ h1 {
   margin-bottom: 20px;
 }
 
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .card-title {
   font-size: 1.2rem;
   font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .card-text {
   font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-top: auto;
+}
+
+/* Ensure uniform height in grid */
+.row > .col-md-4 {
+  display: flex;
+}
+
+.card.h-100 {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import RecipeList from "../components/recipe/RecipeList";
+import Navbar from "../components/Navbar"; // Added Navbar import
 import FilterBar from "../components/recipe/FilterBar";
 import SortDropdown from "../components/recipe/SortDropdown";
 import SearchInput from "../components/recipe/SearchInput";
 import RecipeSuggestions from "../components/RecipeSuggestions";
-import ThemeToggle from "../components/shared/ThemeToggle";
 import "./HomePage.css";
 import { fetchRecipes } from "../services/api";
 
@@ -67,17 +67,20 @@ function HomePage() {
   }, [filters, sort, search]);
 
   return (
-    <div className="home-container">
-      <div className="home-header">
-        <h1>Recipe Sharing Website</h1>
-        <ThemeToggle />
+  <>
+      <Navbar /> {/* Added Navbar component */}
+      <div className="home-container">
+        <div className="home-header">
+          <h1>Recipe Sharing Website</h1>
+          
+        </div>
+        <FilterBar onFilterChange={setFilters} />
+        <SortDropdown onSortChange={setSort} />
+        <SearchInput onSearch={setSearch} />
+        <RecipeList recipes={recipes} />
+        <RecipeSuggestions />
       </div>
-      <FilterBar onFilterChange={setFilters} />
-      <SortDropdown onSortChange={setSort} />
-      <SearchInput onSearch={setSearch} />
-      <RecipeList recipes={recipes} />
-      <RecipeSuggestions />
-    </div>
+    </>
   );
 }
 

@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "mock-api": "json-server --watch db.json --port 3001"
+    "mock-api": "json-server --watch db.json --port 3001 --static ./public"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
