@@ -1,7 +1,7 @@
 {
   "recipes": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Spaghetti Bolognese",
       "description": "Classic Italian pasta dish",
       "ingredients": [
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": 2,
       "title": "Avocado Toast",
       "description": "Simple and healthy breakfast",
       "ingredients": [
@@ -45,10 +45,23 @@
       "servings": 1,
       "category": "Breakfast",
       "rating": 4.2,
-      "image": "Avocado Toast.jpg"
+      "image": "Avocado Toast.jpg",
+       "nutritionalInfo": {
+        "calories": 320,
+        "protein": 8,
+        "fat": 20,
+        "carbs": 30
+      },
+      "comments": [
+        {
+          "username": "HealthyEater",
+          "text": "Perfect quick breakfast!",
+          "timestamp": "2025-06-02T08:15:00Z"
+        }
+      ]
     },
     {
-      "id": "3",
+      "id": 3,
       "title": "Chicken Curry",
       "description": "Spicy Indian-style chicken curry",
       "ingredients": [
@@ -62,10 +75,23 @@
       "servings": 4,
       "category": "Dinner",
       "rating": 4.7,
-      "image": "Chicken Curry.jpg"
+      "image": "Chicken Curry.jpg",
+       "nutritionalInfo": {
+        "calories": 550,
+        "protein": 35,
+        "fat": 25,
+        "carbs": 45
+      },
+      "comments": [
+        {
+          "username": "SpiceLover",
+          "text": "Authentic flavor!",
+          "timestamp": "2025-05-30T19:20:00Z"
+        }
+      ]
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Pancakes",
       "description": "Fluffy pancakes with maple syrup",
       "ingredients": [
@@ -80,10 +106,23 @@
       "servings": 3,
       "category": "Breakfast",
       "rating": 4.6,
-      "image": "Pancakes.jpg"
+      "image": "Pancakes.jpg",
+      "nutritionalInfo": {
+        "calories": 450,
+        "protein": 10,
+        "fat": 15,
+        "carbs": 70
+      },
+      "comments": [
+        {
+          "username": "BreakfastKing",
+          "text": "Fluffy perfection!",
+          "timestamp": "2025-06-05T09:45:00Z"
+        }
+      ]
     },
     {
-      "id": "5",
+      "id": 5,
       "title": "Grilled Salmon",
       "description": "Lemon herb grilled salmon",
       "ingredients": [
@@ -97,10 +136,23 @@
       "servings": 2,
       "category": "Lunch",
       "rating": 4.8,
-      "image": "Grilled Salmon.jpg"
+      "image": "Grilled Salmon.jpg",
+       "nutritionalInfo": {
+        "calories": 400,
+        "protein": 35,
+        "fat": 25,
+        "carbs": 5
+      },
+      "comments": [
+        {
+          "username": "SeafoodFan",
+          "text": "So juicy and flavorful!",
+          "timestamp": "2025-06-10T13:10:00Z"
+        }
+      ]
     },
     {
-      "id": "6",
+      "id": 6,
       "title": "Greek Salad",
       "description": "Refreshing salad with feta cheese",
       "ingredients": [
@@ -115,10 +167,23 @@
       "servings": 2,
       "category": "Lunch",
       "rating": 4.3,
-      "image": "Greek Salad.jpg"
+      "image": "Greek Salad.jpg",
+       "nutritionalInfo": {
+        "calories": 280,
+        "protein": 10,
+        "fat": 20,
+        "carbs": 15
+      },
+      "comments": [
+        {
+          "username": "SaladLover",
+          "text": "Refreshing and light!",
+          "timestamp": "2025-06-08T12:30:00Z"
+        }
+      ]
     },
     {
-      "id": "7",
+      "id": 7,
       "title": "Sushi Rolls",
       "description": "Homemade sushi with rice and fish",
       "ingredients": [
@@ -132,10 +197,23 @@
       "servings": 4,
       "category": "Dinner",
       "rating": 4.9,
-      "image": "Sushi Rolls.jpg"
+      "image": "Sushi Rolls.jpg",
+        "nutritionalInfo": {
+        "calories": 500,
+        "protein": 20,
+        "fat": 10,
+        "carbs": 80
+      },
+      "comments": [
+        {
+          "username": "SushiMaster",
+          "text": "Better than restaurant quality!",
+          "timestamp": "2025-05-25T20:15:00Z"
+        }
+      ]
     },
     {
-      "id": "8",
+      "id": 8,
       "title": "Chocolate Cake",
       "description": "Rich and moist chocolate cake",
       "ingredients": [
@@ -150,10 +228,23 @@
       "servings": 8,
       "category": "Dessert",
       "rating": 4.9,
-      "image": "Chocolate Cake.jpg"
+      "image": "Chocolate Cake.jpg",
+       "nutritionalInfo": {
+        "calories": 350,
+        "protein": 5,
+        "fat": 15,
+        "carbs": 50
+      },
+      "comments": [
+        {
+          "username": "DessertQueen",
+          "text": "Ultimate chocolate fix!",
+          "timestamp": "2025-06-15T16:45:00Z"
+        }
+      ]
     },
     {
-      "id": "9",
+      "id": 9,
       "title": "Caesar Salad",
       "description": "Classic salad with creamy dressing",
       "ingredients": [
@@ -167,10 +258,23 @@
       "servings": 2,
       "category": "Lunch",
       "rating": 4.1,
-      "image": "Caesar Salad.jpg"
+      "image": "Caesar Salad.jpg",
+      "nutritionalInfo": {
+        "calories": 320,
+        "protein": 12,
+        "fat": 25,
+        "carbs": 15
+      },
+      "comments": [
+        {
+          "username": "ClassicFoodie",
+          "text": "Creamy dressing is perfect!",
+          "timestamp": "2025-06-12T11:20:00Z"
+        }
+      ]
     },
     {
-      "id": "10",
+      "id": 10,
       "title": "Pizza Margherita",
       "description": "Traditional Italian pizza",
       "ingredients": [
@@ -184,10 +288,23 @@
       "servings": 4,
       "category": "Dinner",
       "rating": 4.8,
-      "image": "Pizza Margherita.jpg"
+      "image": "Pizza Margherita.jpg",
+      "nutritionalInfo": {
+        "calories": 800,
+        "protein": 30,
+        "fat": 35,
+        "carbs": 90
+      },
+      "comments": [
+        {
+          "username": "PizzaLover",
+          "text": "Simple and delicious!",
+          "timestamp": "2025-06-07T18:30:00Z"
+        }
+      ]
     },
     {
-      "id": "11",
+      "id": 11,
       "title": "Ramen",
       "description": "Japanese noodle soup with toppings",
       "ingredients": [
@@ -202,10 +319,23 @@
       "servings": 2,
       "category": "Dinner",
       "rating": 4.6,
-      "image": "Ramen.jpg"
+      "image": "Ramen.jpg",
+      "nutritionalInfo": {
+        "calories": 650,
+        "protein": 30,
+        "fat": 20,
+        "carbs": 80
+      },
+      "comments": [
+        {
+          "username": "NoodleFan",
+          "text": "Comfort in a bowl!",
+          "timestamp": "2025-05-28T21:00:00Z"
+        }
+      ]
     },
     {
-      "id": "12",
+      "id": 12,
       "title": "Fruit Bowl",
       "description": "Colorful bowl of fresh fruits",
       "ingredients": [
@@ -219,10 +349,23 @@
       "servings": 2,
       "category": "Dessert",
       "rating": 4.2,
-      "image": "Fruit Bowl.jpg"
+      "image": "Fruit Bowl.jpg",
+      "nutritionalInfo": {
+        "calories": 200,
+        "protein": 3,
+        "fat": 1,
+        "carbs": 50
+      },
+      "comments": [
+        {
+          "username": "HealthyChoices",
+          "text": "So colorful and fresh!",
+          "timestamp": "2025-06-03T10:10:00Z"
+        }
+      ]
     },
     {
-      "id": "13",
+      "id": 13,
       "title": "Burrito Bowl",
       "description": "Mexican-style bowl with rice and beans",
       "ingredients": [
@@ -237,10 +380,23 @@
       "servings": 2,
       "category": "Lunch",
       "rating": 4.5,
-      "image": "Burrito Bowl.jpg"
+      "image": "Burrito Bowl.jpg",
+      "nutritionalInfo": {
+        "calories": 600,
+        "protein": 25,
+        "fat": 20,
+        "carbs": 75
+      },
+      "comments": [
+        {
+          "username": "MexicanFoodLover",
+          "text": "All my favorites in one bowl!",
+          "timestamp": "2025-06-09T12:45:00Z"
+        }
+      ]
     },
     {
-      "id": "14",
+      "id": 14,
       "title": "Steak",
       "description": "Grilled beef steak with garlic butter",
       "ingredients": [
@@ -254,10 +410,23 @@
       "servings": 2,
       "category": "Dinner",
       "rating": 4.9,
-      "image": "Steak.jpg"
+      "image": "Steak.jpg",
+      "nutritionalInfo": {
+        "calories": 500,
+        "protein": 40,
+        "fat": 35,
+        "carbs": 5
+      },
+      "comments": [
+        {
+          "username": "MeatLover",
+          "text": "Juicy and cooked perfectly!",
+          "timestamp": "2025-06-14T19:30:00Z"
+        }
+      ]
     },
     {
-      "id": "15",
+      "id": 15,
       "title": "Smoothie Bowl",
       "description": "Blended fruits with granola topping",
       "ingredients": [
@@ -271,10 +440,23 @@
       "servings": 1,
       "category": "Breakfast",
       "rating": 4.4,
-      "image": "Smoothie Bowl.jpg"
+      "image": "Smoothie Bowl.jpg",
+      "nutritionalInfo": {
+        "calories": 350,
+        "protein": 10,
+        "fat": 8,
+        "carbs": 60
+      },
+      "comments": [
+        {
+          "username": "SmoothieFan",
+          "text": "Great energy boost!",
+          "timestamp": "2025-06-04T08:20:00Z"
+        }
+      ]
     },
     {
-      "id": "16",
+      "id": 16,
       "title": "Mac and Cheese",
       "description": "Creamy cheesy pasta dish",
       "ingredients": [
@@ -288,10 +470,23 @@
       "servings": 3,
       "category": "Lunch",
       "rating": 4.3,
-      "image": "Mac and Cheese.jpg"
+      "image": "Mac and Cheese.jpg",
+      "nutritionalInfo": {
+        "calories": 550,
+        "protein": 20,
+        "fat": 30,
+        "carbs": 45
+      },
+      "comments": [
+        {
+          "username": "ComfortFoodie",
+          "text": "Creamy and cheesy goodness!",
+          "timestamp": "2025-06-11T17:15:00Z"
+        }
+      ]
     },
     {
-      "id": "17",
+      "id": 17,
       "title": "Pad Thai",
       "description": "Stir-fried Thai noodles",
       "ingredients": [
@@ -306,10 +501,23 @@
       "servings": 2,
       "category": "Dinner",
       "rating": 4.7,
-      "image": "Pad Thai.jpg"
+      "image": "Pad Thai.jpg",
+      "nutritionalInfo": {
+        "calories": 700,
+        "protein": 25,
+        "fat": 20,
+        "carbs": 100
+      },
+      "comments": [
+        {
+          "username": "ThaiFoodExpert",
+          "text": "Authentic street food taste!",
+          "timestamp": "2025-05-27T20:45:00Z"
+        }
+      ]
     },
     {
-      "id": "18",
+      "id": 18,
       "title": "French Toast",
       "description": "Bread soaked in egg and milk, then fried",
       "ingredients": [
@@ -324,10 +532,23 @@
       "servings": 2,
       "category": "Breakfast",
       "rating": 4.4,
-      "image": "French Toast.jpg"
+      "image": "French Toast.jpg",
+      "nutritionalInfo": {
+        "calories": 400,
+        "protein": 12,
+        "fat": 15,
+        "carbs": 55
+      },
+      "comments": [
+        {
+          "username": "BrunchLover",
+          "text": "Crispy outside, soft inside!",
+          "timestamp": "2025-06-06T10:30:00Z"
+        }
+      ]
     },
     {
-      "id": "19",
+      "id": 19,
       "title": "Ice Cream Sundae",
       "description": "Ice cream topped with fruits and sauce",
       "ingredients": [
@@ -341,10 +562,23 @@
       "servings": 2,
       "category": "Dessert",
       "rating": 4.6,
-      "image": "Ice Cream Sundae.jpg"
+      "image": "Ice Cream Sundae.jpg",
+       "nutritionalInfo": {
+        "calories": 450,
+        "protein": 8,
+        "fat": 25,
+        "carbs": 50
+      },
+      "comments": [
+        {
+          "username": "SweetTooth",
+          "text": "Perfect treat for hot days!",
+          "timestamp": "2025-06-13T15:00:00Z"
+        }
+      ]
     },
     {
-      "id": "20",
+      "id": 20,
       "title": "Veggie Stir Fry",
       "description": "Quick sautéed vegetables with sauce",
       "ingredients": [
@@ -359,7 +593,20 @@
       "servings": 2,
       "category": "Lunch",
       "rating": 4.3,
-      "image": "Veggie Stir Fry.jpg"
+      "image": "Veggie Stir Fry.jpg",
+      "nutritionalInfo": {
+        "calories": 300,
+        "protein": 10,
+        "fat": 12,
+        "carbs": 40
+      },
+      "comments": [
+        {
+          "username": "PlantBased",
+          "text": "Quick and nutritious!",
+          "timestamp": "2025-06-16T18:20:00Z"
+        }
+      ]
     }
   ],
   "users": [

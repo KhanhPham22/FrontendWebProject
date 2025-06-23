@@ -4,9 +4,26 @@ import { Card } from 'react-bootstrap';
 function NutritionInfo({ nutritionalInfo, servings }) {
   const [viewPerServing, setViewPerServing] = useState(true);
 
+  // Nếu không có nutritionalInfo → render fallback
+  if (!nutritionalInfo) {
+    return (
+      <Card className="mt-3">
+        <Card.Body>
+          <Card.Title>Nutritional Information</Card.Title>
+          <p className="text-muted">No nutritional info available.</p>
+        </Card.Body>
+      </Card>
+    );
+  }
+
   const { calories, protein, fat, carbs } = nutritionalInfo;
   const displayValues = viewPerServing
-    ? { calories: calories / servings, protein: protein / servings, fat: fat / servings, carbs: carbs / servings }
+    ? {
+        calories: calories / servings,
+        protein: protein / servings,
+        fat: fat / servings,
+        carbs: carbs / servings,
+      }
     : nutritionalInfo;
 
   return (

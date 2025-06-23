@@ -1,0 +1,32 @@
+.home-container {
+  padding: 30px;
+  background: linear-gradient(to right, #f0f4f8, #e0f7fa);
+  min-height: 100vh;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-weight: bold;
+  color: #0077b6;
+}
+
+.filter-bar,
+.sort-dropdown,
+.search-input {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}

@@ -19,7 +19,8 @@ function SortableRecipe({ recipe }) {
       <Card className="h-100 shadow-sm">
         <Card.Img
           variant="top"
-          src={`/assets/images/${recipe.image}`}
+          src={`assets/images/${recipe.image}`}
+
           alt={recipe.title}
           style={{ height: '200px', objectFit: 'cover' }}
         />
