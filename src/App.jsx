@@ -21,6 +21,7 @@ function App() {
             <Route path="/recipe/:id" element={<RecipeDetailPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/meal-planner" element={<MealPlannerPage />} />
+            <Route path="/recipemanagement" element={<RecipeManagementPage />} />
           </Routes>
         </div>
       </Router>

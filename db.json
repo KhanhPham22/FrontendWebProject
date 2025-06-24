@@ -1,7 +1,7 @@
 {
   "recipes": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Spaghetti Bolognese",
       "description": "Classic Italian pasta dish",
       "ingredients": [
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Avocado Toast",
       "description": "Simple and healthy breakfast",
       "ingredients": [
@@ -46,7 +46,7 @@
       "category": "Breakfast",
       "rating": 4.2,
       "image": "Avocado Toast.jpg",
-       "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 320,
         "protein": 8,
         "fat": 20,
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Chicken Curry",
       "description": "Spicy Indian-style chicken curry",
       "ingredients": [
@@ -76,7 +76,7 @@
       "category": "Dinner",
       "rating": 4.7,
       "image": "Chicken Curry.jpg",
-       "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 550,
         "protein": 35,
         "fat": 25,
@@ -91,7 +91,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Pancakes",
       "description": "Fluffy pancakes with maple syrup",
       "ingredients": [
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Grilled Salmon",
       "description": "Lemon herb grilled salmon",
       "ingredients": [
@@ -137,7 +137,7 @@
       "category": "Lunch",
       "rating": 4.8,
       "image": "Grilled Salmon.jpg",
-       "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 400,
         "protein": 35,
         "fat": 25,
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Greek Salad",
       "description": "Refreshing salad with feta cheese",
       "ingredients": [
@@ -168,7 +168,7 @@
       "category": "Lunch",
       "rating": 4.3,
       "image": "Greek Salad.jpg",
-       "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 280,
         "protein": 10,
         "fat": 20,
@@ -183,7 +183,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Sushi Rolls",
       "description": "Homemade sushi with rice and fish",
       "ingredients": [
@@ -198,7 +198,7 @@
       "category": "Dinner",
       "rating": 4.9,
       "image": "Sushi Rolls.jpg",
-        "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 500,
         "protein": 20,
         "fat": 10,
@@ -213,7 +213,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Chocolate Cake",
       "description": "Rich and moist chocolate cake",
       "ingredients": [
@@ -229,7 +229,7 @@
       "category": "Dessert",
       "rating": 4.9,
       "image": "Chocolate Cake.jpg",
-       "nutritionalInfo": {
+      "nutritionalInfo": {
         "calories": 350,
         "protein": 5,
         "fat": 15,
@@ -244,7 +244,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Caesar Salad",
       "description": "Classic salad with creamy dressing",
       "ingredients": [
@@ -274,7 +274,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Pizza Margherita",
       "description": "Traditional Italian pizza",
       "ingredients": [
@@ -304,7 +304,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": "11",
       "title": "Ramen",
       "description": "Japanese noodle soup with toppings",
       "ingredients": [
@@ -335,7 +335,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": "12",
       "title": "Fruit Bowl",
       "description": "Colorful bowl of fresh fruits",
       "ingredients": [
@@ -365,7 +365,7 @@
       ]
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "Burrito Bowl",
       "description": "Mexican-style bowl with rice and beans",
       "ingredients": [
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "id": 14,
+      "id": "14",
       "title": "Steak",
       "description": "Grilled beef steak with garlic butter",
       "ingredients": [
@@ -426,7 +426,7 @@
       ]
     },
     {
-      "id": 15,
+      "id": "15",
       "title": "Smoothie Bowl",
       "description": "Blended fruits with granola topping",
       "ingredients": [
@@ -456,7 +456,7 @@
       ]
     },
     {
-      "id": 16,
+      "id": "16",
       "title": "Mac and Cheese",
       "description": "Creamy cheesy pasta dish",
       "ingredients": [
@@ -486,7 +486,7 @@
       ]
     },
     {
-      "id": 17,
+      "id": "17",
       "title": "Pad Thai",
       "description": "Stir-fried Thai noodles",
       "ingredients": [
@@ -517,96 +517,16 @@
       ]
     },
     {
-      "id": 18,
-      "title": "French Toast",
-      "description": "Bread soaked in egg and milk, then fried",
-      "ingredients": [
-        "bread",
-        "egg",
-        "milk",
-        "cinnamon",
-        "syrup"
-      ],
-      "instructions": "Dip bread and cook on pan, add toppings.",
-      "cookingTime": 15,
-      "servings": 2,
-      "category": "Breakfast",
-      "rating": 4.4,
-      "image": "French Toast.jpg",
-      "nutritionalInfo": {
-        "calories": 400,
-        "protein": 12,
-        "fat": 15,
-        "carbs": 55
-      },
-      "comments": [
-        {
-          "username": "BrunchLover",
-          "text": "Crispy outside, soft inside!",
-          "timestamp": "2025-06-06T10:30:00Z"
-        }
-      ]
+      "rating": 4,
+      "id": "18"
     },
     {
-      "id": 19,
-      "title": "Ice Cream Sundae",
-      "description": "Ice cream topped with fruits and sauce",
-      "ingredients": [
-        "ice cream",
-        "chocolate sauce",
-        "berries",
-        "nuts"
-      ],
-      "instructions": "Scoop ice cream, add toppings.",
-      "cookingTime": 5,
-      "servings": 2,
-      "category": "Dessert",
-      "rating": 4.6,
-      "image": "Ice Cream Sundae.jpg",
-       "nutritionalInfo": {
-        "calories": 450,
-        "protein": 8,
-        "fat": 25,
-        "carbs": 50
-      },
-      "comments": [
-        {
-          "username": "SweetTooth",
-          "text": "Perfect treat for hot days!",
-          "timestamp": "2025-06-13T15:00:00Z"
-        }
-      ]
+      "rating": 4,
+      "id": "19"
     },
     {
-      "id": 20,
-      "title": "Veggie Stir Fry",
-      "description": "Quick sautéed vegetables with sauce",
-      "ingredients": [
-        "broccoli",
-        "carrots",
-        "bell pepper",
-        "soy sauce",
-        "garlic"
-      ],
-      "instructions": "Stir-fry vegetables and serve with rice.",
-      "cookingTime": 20,
-      "servings": 2,
-      "category": "Lunch",
-      "rating": 4.3,
-      "image": "Veggie Stir Fry.jpg",
-      "nutritionalInfo": {
-        "calories": 300,
-        "protein": 10,
-        "fat": 12,
-        "carbs": 40
-      },
-      "comments": [
-        {
-          "username": "PlantBased",
-          "text": "Quick and nutritious!",
-          "timestamp": "2025-06-16T18:20:00Z"
-        }
-      ]
+      "rating": 5,
+      "id": "20"
     }
   ],
   "users": [
@@ -620,13 +540,11 @@
       "dietaryPreferences": []
     },
     {
-      "id": "a501",
-      "username": "test",
-      "email": "test@gmail.com",
-      "password": "12345678",
-      "profilePicture": "",
-      "favorites": [],
-      "dietaryPreferences": []
+      "id": "a97e",
+      "username": "baycho",
+      "email": "baycho@gmail.com",
+      "password": "CR7123456",
+      "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlQ1hWE7iYhcOeyDtFnIUbVOdFYbGRMi3GeL-mdQZCv-NFrJWndOCVmLYSKQcqiwmdboFMO-H3sSeWfJxFbJc9hXF7fP3amdBenF7-bd0HUg"
     }
   ]
 }

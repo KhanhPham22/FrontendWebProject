@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext';
+import { registerUser } from '../../services/api';
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -21,8 +22,10 @@ function RegisterForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
     if (!validateEmail(formData.email)) {
       setError('Invalid email format');
       return;
@@ -35,8 +38,14 @@ function RegisterForm() {
       setError('Username is required');
       return;
     }
-    register(formData);
-    navigate('/');
+
+    try {
+      const registeredUser = await registerUser(formData);
+      register(registeredUser);
+      navigate('/');
+    } catch (err) {
+      setError('Registration failed. Email or username may already exist.');
+    }
   };
 
   return (

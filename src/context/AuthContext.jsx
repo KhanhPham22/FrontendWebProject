@@ -14,8 +14,13 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const register = (userData) => {
-    setUser(userData);
+ const register = (userData) => {
+    setUser({
+      id: userData.id,
+      username: userData.username,
+      email: userData.email,
+      profilePicture: userData.profilePicture,
+    });
   };
 
   return (

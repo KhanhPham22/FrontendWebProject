@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Button, Form, Alert } from "react-bootstrap";
-import { Link } from 'react-router-dom'; // thêm dòng này ở đầu file nếu chưa có
-
+import { Link } from 'react-router-dom';
+import { loginUser } from "../../services/api";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -14,8 +14,10 @@ function LoginForm() {
 
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     if (!validateEmail(email)) {
       setError("Invalid email format");
       return;
@@ -24,8 +26,19 @@ function LoginForm() {
       setError("Password must be at least 8 characters");
       return;
     }
-    login({ email, username: email.split("@")[0] });
-    navigate("/");
+
+    try {
+      const userData = await loginUser({ email, password });
+      login({
+        id: userData.id,
+        username: userData.username,
+        email: userData.email,
+        profilePicture: userData.profilePicture,
+      });
+      navigate("/");
+    } catch (err) {
+      setError("Invalid email or password");
+    }
   };
 
   return (
