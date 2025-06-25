@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import './FavoriteButton.css';
 
 function FavoriteButton({ recipeId }) {
   const [favorites, setFavorites] = useLocalStorage('favorites', []);

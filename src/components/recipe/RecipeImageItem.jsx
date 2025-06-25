@@ -1,9 +1,10 @@
+// RecipeImageItem.jsx
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import RatingStars from "./RatingStars"; 
-import FavoriteButton from "./FavoriteButton"; 
+import RatingStars from "./RatingStars";
+import FavoriteButton from "./FavoriteButton";
 
-function RecipeImageItem({ recipe }) {
+function RecipeImageItem({ recipe, showControls = false, onEdit, onDelete }) {
   const imageUrl = `/assets/images/${encodeURIComponent(recipe.image || "placeholder.jpg")}`;
 
   return (
@@ -28,12 +29,30 @@ function RecipeImageItem({ recipe }) {
             <RatingStars rating={recipe.rating} recipeId={recipe.id} />
           </div>
         </div>
-       <div className="d-flex justify-content-between align-items-center mt-3">
-
-          <Link to={`/recipe/${recipe.id}`} className="btn btn-primary">
-            View Details
-          </Link>
-          <FavoriteButton recipeId={recipe.id} />
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          {showControls ? (
+            <>
+              <Button
+                variant="outline-primary"
+                onClick={() => onEdit(recipe)}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="outline-danger"
+                onClick={() => onDelete(recipe)}
+              >
+                Delete
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link to={`/recipe/${recipe.id}`} className="btn btn-primary">
+                View Details
+              </Link>
+              <FavoriteButton recipeId={recipe.id} />
+            </>
+          )}
         </div>
       </Card.Body>
     </Card>

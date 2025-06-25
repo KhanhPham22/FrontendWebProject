@@ -1,0 +1,89 @@
+/* src/components/profile/ProfilePage.css */
+
+/* Container chính */
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Card thông tin người dùng */
+.user-info-card {
+  text-align: center;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--bs-light);
+}
+
+/* Ảnh đại diện */
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid var(--bs-primary);
+}
+
+/* Recipe item trong danh sách */
+.recipe-item {
+  transition: background-color 0.2s ease;
+}
+
+.recipe-item:hover {
+  background-color: var(--bs-light);
+}
+
+/* Ảnh recipe */
+.recipe-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Tiêu đề recipe */
+.recipe-item h6 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--bs-dark);
+}
+
+/* Mô tả recipe */
+.recipe-item .text-muted {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Tùy chỉnh cho dark theme */
+[data-theme='dark'] .user-info-card {
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
+}
+
+[data-theme='dark'] .recipe-item:hover {
+  background-color: var(--bs-gray-dark);
+}
+
+[data-theme='dark'] .recipe-item h6 {
+  color: var(--bs-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .recipe-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .recipe-item h6 {
+    font-size: 1rem;
+  }
+
+  .recipe-item .text-muted {
+    font-size: 0.85rem;
+  }
+}

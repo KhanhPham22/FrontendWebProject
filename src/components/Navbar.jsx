@@ -29,11 +29,6 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/favorites">
-                Favorites
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/meal-planner">
                 Meal Planner
               </Link>

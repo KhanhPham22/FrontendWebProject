@@ -1,3 +1,4 @@
+/* index.css */
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -10,6 +11,13 @@ html, body, #root {
   --background-dark: #343a40;
   --text-light: #000000;
   --text-dark: #ffffff;
+  --bs-danger: #dc3545; /* Bootstrap's danger color for consistency */
+  --bs-danger-hover: #c82333; /* Darker red for hover */
+}
+
+[data-theme='light'] {
+  --background: var(--background-light);
+  --text: var(--text-light);
 }
 
 [data-theme='dark'] {
@@ -18,8 +26,8 @@ html, body, #root {
 }
 
 body {
- 
-  color: var(--text-light);
+  background-color: var(--background);
+  color: var(--text);
   transition: all 0.3s ease;
   font-family: Arial, sans-serif;
 }
@@ -33,4 +41,9 @@ body {
 .card {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent global text color from affecting buttons */
+.btn, .btn-danger, .btn-outline-danger {
+  color: inherit !important; /* Prevent body color override */
 }

@@ -1,4 +1,4 @@
-// components/recipe/RecipeList.jsx
+// RecipeList.jsx
 import { Row, Col } from "react-bootstrap";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
@@ -9,11 +9,13 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import RecipeImageItem from "./RecipeImageItem";
+import { useEffect } from "react";
 
 function SortableRecipe({ recipe, onDelete, onEdit, showControls }) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-    id: recipe.id,
-  });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: recipe.id,
+    });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -24,17 +26,12 @@ function SortableRecipe({ recipe, onDelete, onEdit, showControls }) {
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
       <Col md={4} className="mb-4 d-flex">
         <div className="w-100">
-          <RecipeImageItem recipe={recipe} />
-          {showControls && (
-            <div className="d-flex justify-content-between mt-2">
-              <button className="btn btn-outline-primary" onClick={() => onEdit(recipe)}>
-                Edit
-              </button>
-              <button className="btn btn-outline-danger" onClick={() => onDelete(recipe)}>
-                Delete
-              </button>
-            </div>
-          )}
+          <RecipeImageItem
+            recipe={recipe}
+            showControls={showControls}
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
         </div>
       </Col>
     </div>
@@ -46,6 +43,16 @@ function RecipeList({ recipes, onDelete, onEdit, showControls = false }) {
     "recipeOrder",
     recipes.map((r) => r.id)
   );
+
+  // 🩹 Đồng bộ lại order nếu có sự khác biệt giữa recipeOrder và recipes
+  useEffect(() => {
+    const currentIds = recipes.map((r) => r.id);
+    const hasMissingIds = recipeOrder.some((id) => !currentIds.includes(id));
+    const hasNewIds = currentIds.some((id) => !recipeOrder.includes(id));
+    if (hasMissingIds || hasNewIds) {
+      setRecipeOrder(currentIds); // cập nhật lại nếu không khớp
+    }
+  }, [recipes]);
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
@@ -62,25 +69,42 @@ function RecipeList({ recipes, onDelete, onEdit, showControls = false }) {
   const orderedRecipes = recipeOrder
     .map((id) => recipes.find((recipe) => recipe.id === id))
     .filter((recipe) => recipe);
-
-  const content = (
-    <Row>
-      {orderedRecipes.map((recipe) => (
-        <SortableRecipe
-          key={recipe.id}
-          recipe={recipe}
-          onDelete={onDelete}
-          onEdit={onEdit}
-          showControls={showControls}
-        />
-      ))}
-    </Row>
+  console.log(
+    "🔍 Ordered recipes to render:",
+    orderedRecipes.map((r) => ({
+      id: r.id,
+      title: r.title,
+      image: r.image,
+    }))
   );
 
-  // Drag & Drop chỉ dùng khi có controls
+  const content = (
+    <div className="recipes-grid">
+      {orderedRecipes.map((recipe) =>
+        showControls ? (
+          <div key={recipe.id}>
+            <RecipeImageItem
+              recipe={recipe}
+              showControls={showControls}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
+          </div>
+        ) : (
+          <div key={recipe.id}>
+            <RecipeImageItem recipe={recipe} />
+          </div>
+        )
+      )}
+    </div>
+  );
+
   return showControls ? (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={orderedRecipes.map((r) => r.id)} strategy={verticalListSortingStrategy}>
+      <SortableContext
+        items={orderedRecipes.map((r) => r.id)}
+        strategy={verticalListSortingStrategy}
+      >
         {content}
       </SortableContext>
     </DndContext>

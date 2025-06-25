@@ -16,52 +16,56 @@ function HomePage() {
 
   useEffect(() => {
     const loadRecipes = async () => {
-      let data = await fetchRecipes();
+      try {
+        let data = await fetchRecipes();
 
-      // Apply filters
-      if (filters.category) {
-        data = data.filter((recipe) => recipe.category === filters.category);
-      }
-      if (filters.cookingTime) {
-        data = data.filter(
-          (recipe) => recipe.cookingTime <= parseInt(filters.cookingTime)
-        );
-      }
-      if (filters.servings) {
-        data = data.filter(
-          (recipe) => recipe.servings === parseInt(filters.servings)
-        );
-      }
+        // Apply filters
+        if (filters.category) {
+          data = data.filter((recipe) => recipe.category === filters.category);
+        }
+        if (filters.cookingTime) {
+          data = data.filter(
+            (recipe) => recipe.cookingTime <= parseInt(filters.cookingTime)
+          );
+        }
+        if (filters.servings) {
+          data = data.filter(
+            (recipe) => recipe.servings === parseInt(filters.servings)
+          );
+        }
 
-      // Apply search
-      if (search) {
-        const lowerSearch = search.toLowerCase();
-        data = data.filter(
-          (recipe) =>
-            recipe.title.toLowerCase().includes(lowerSearch) ||
-            recipe.description.toLowerCase().includes(lowerSearch) ||
-            recipe.ingredients.some((ing) =>
-              ing.toLowerCase().includes(lowerSearch)
-            )
-        );
-      }
+        // Apply search
+        if (search) {
+          const lowerSearch = search.toLowerCase();
+          data = data.filter(
+            (recipe) =>
+              recipe.title.toLowerCase().includes(lowerSearch) ||
+              recipe.description.toLowerCase().includes(lowerSearch) ||
+              recipe.ingredients.some((ing) =>
+                ing.toLowerCase().includes(lowerSearch)
+              )
+          );
+        }
 
-      // Apply sorting
-      if (sort === "newest") {
-        data.sort((a, b) => b.id - a.id);
-      } else if (sort === "oldest") {
-        data.sort((a, b) => a.id - b.id);
-      } else if (sort === "rating-desc") {
-        data.sort((a, b) => b.rating - a.rating);
-      } else if (sort === "rating-asc") {
-        data.sort((a, b) => a.rating - b.rating);
-      } else if (sort === "title-asc") {
-        data.sort((a, b) => a.title.localeCompare(b.title));
-      } else if (sort === "title-desc") {
-        data.sort((a, b) => b.title.localeCompare(a.title));
-      }
+        // Apply sorting
+        if (sort === "newest") {
+          data.sort((a, b) => b.id - a.id);
+        } else if (sort === "oldest") {
+          data.sort((a, b) => a.id - b.id);
+        } else if (sort === "rating-desc") {
+          data.sort((a, b) => b.rating - a.rating);
+        } else if (sort === "rating-asc") {
+          data.sort((a, b) => a.rating - b.rating);
+        } else if (sort === "title-asc") {
+          data.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sort === "title-desc") {
+          data.sort((a, b) => b.title.localeCompare(a.title));
+        }
 
-      setRecipes(data.slice(0, 3));
+        setRecipes(data);
+      } catch (error) {
+        setRecipes([]);
+      }
     };
     loadRecipes();
   }, [filters, sort, search]);
@@ -73,11 +77,15 @@ function HomePage() {
         <div className="home-header">
           <h1>Recipe Sharing Website</h1>
         </div>
-        <FilterBar onFilterChange={setFilters} />
-        <SortDropdown onSortChange={setSort} />
-        <SearchInput onSearch={setSearch} />
-        <h2>Favorite Recipes</h2>
-        <RecipeList recipes={recipes} />
+        <div className="controls-container">
+          <FilterBar onFilterChange={setFilters} />
+          <SortDropdown onSortChange={setSort} />
+          <SearchInput onSearch={setSearch} />
+        </div>
+        <h2>Recipes</h2>
+        <div className="recipes-grid">
+          <RecipeList recipes={recipes} showControls={false} />
+        </div>
         <RecipeSuggestions />
       </div>
     </>
