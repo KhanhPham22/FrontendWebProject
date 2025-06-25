@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import RecipeList from "../components/recipe/RecipeList";
-import Navbar from "../components/Navbar"; // Added Navbar import
+import Navbar from "../components/Navbar";
 import FilterBar from "../components/recipe/FilterBar";
 import SortDropdown from "../components/recipe/SortDropdown";
 import SearchInput from "../components/recipe/SearchInput";
@@ -61,22 +61,22 @@ function HomePage() {
         data.sort((a, b) => b.title.localeCompare(a.title));
       }
 
-      setRecipes(data);
+      setRecipes(data.slice(0, 3));
     };
     loadRecipes();
   }, [filters, sort, search]);
 
   return (
-  <>
-      <Navbar /> {/* Added Navbar component */}
+    <>
+      <Navbar />
       <div className="home-container">
         <div className="home-header">
           <h1>Recipe Sharing Website</h1>
-          
         </div>
         <FilterBar onFilterChange={setFilters} />
         <SortDropdown onSortChange={setSort} />
         <SearchInput onSearch={setSearch} />
+        <h2>Favorite Recipes</h2>
         <RecipeList recipes={recipes} />
         <RecipeSuggestions />
       </div>

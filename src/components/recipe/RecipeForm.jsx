@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Card } from 'react-bootstrap';
-import { postRecipe } from '../../services/api';
+import { postRecipe, updateRecipe } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 
-function RecipeForm() {
+function RecipeForm({ onRecipeAdded, onRecipeUpdated, editRecipe }) {
   const [recipe, setRecipe] = useState({
     title: '',
     description: '',
@@ -13,9 +13,20 @@ function RecipeForm() {
     cookingTime: 0,
     servings: 1,
     category: 'Breakfast',
+    image: '',
   });
+  const [imageFile, setImageFile] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (editRecipe) {
+      setRecipe({
+        ...editRecipe,
+        ingredients: editRecipe.ingredients || [''],
+      });
+    }
+  }, [editRecipe]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,6 +43,14 @@ function RecipeForm() {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ''] });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setRecipe({ ...recipe, image: file.name });
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -43,22 +62,36 @@ function RecipeForm() {
       return;
     }
     try {
-      await postRecipe({
+      const recipeData = {
         ...recipe,
         username: user.username,
-        rating: 0,
-        nutritionalInfo: { calories: 0, protein: 0, fat: 0, carbs: 0 },
-        comments: [],
-      });
-      navigate('/');
+        rating: recipe.rating || 0,
+        nutritionalInfo: recipe.nutritionalInfo || {
+          calories: 0,
+          protein: 0,
+          fat: 0,
+          carbs: 0,
+        },
+        comments: recipe.comments || [],
+      };
+
+      if (editRecipe) {
+        await updateRecipe(editRecipe.id, recipeData);
+        onRecipeUpdated({ ...recipeData, id: editRecipe.id });
+      } else {
+        const response = await postRecipe(recipeData);
+        onRecipeAdded(response);
+      }
+      navigate('/recipemanagement');
     } catch (error) {
       alert('Failed to save recipe');
+      console.error('Error saving recipe:', error);
     }
   };
 
   return (
     <Card className="p-4 mt-4">
-      <h2>Create Recipe</h2>
+      <h2>{editRecipe ? 'Edit Recipe' : 'Create Recipe'}</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Title</Form.Label>
@@ -141,8 +174,26 @@ function RecipeForm() {
           </Form.Select>
         </Form.Group>
 
+        <Form.Group className="mb-3">
+          <Form.Label>Image</Form.Label>
+          <Form.Control
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          {recipe.image && (
+            <div className="mt-2">
+              <img
+                src={`/assets/images/${encodeURIComponent(recipe.image)}`}
+                alt="Preview"
+                style={{ maxWidth: '100px', maxHeight: '100px' }}
+              />
+            </div>
+          )}
+        </Form.Group>
+
         <Button variant="primary" type="submit">
-          Save Recipe
+          {editRecipe ? 'Update Recipe' : 'Save Recipe'}
         </Button>
       </Form>
     </Card>

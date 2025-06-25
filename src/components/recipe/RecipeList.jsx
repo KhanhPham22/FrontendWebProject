@@ -1,4 +1,4 @@
-import { useState } from "react";
+// components/recipe/RecipeList.jsx
 import { Row, Col } from "react-bootstrap";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
@@ -10,11 +10,10 @@ import { CSS } from "@dnd-kit/utilities";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import RecipeImageItem from "./RecipeImageItem";
 
-function SortableRecipe({ recipe }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: recipe.id,
-    });
+function SortableRecipe({ recipe, onDelete, onEdit, showControls }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: recipe.id,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -23,12 +22,26 @@ function SortableRecipe({ recipe }) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <RecipeImageItem recipe={recipe} />
+      <Col md={4} className="mb-4 d-flex">
+        <div className="w-100">
+          <RecipeImageItem recipe={recipe} />
+          {showControls && (
+            <div className="d-flex justify-content-between mt-2">
+              <button className="btn btn-outline-primary" onClick={() => onEdit(recipe)}>
+                Edit
+              </button>
+              <button className="btn btn-outline-danger" onClick={() => onDelete(recipe)}>
+                Delete
+              </button>
+            </div>
+          )}
+        </div>
+      </Col>
     </div>
   );
 }
 
-function RecipeList({ recipes }) {
+function RecipeList({ recipes, onDelete, onEdit, showControls = false }) {
   const [recipeOrder, setRecipeOrder] = useLocalStorage(
     "recipeOrder",
     recipes.map((r) => r.id)
@@ -50,19 +63,29 @@ function RecipeList({ recipes }) {
     .map((id) => recipes.find((recipe) => recipe.id === id))
     .filter((recipe) => recipe);
 
-  return (
+  const content = (
+    <Row>
+      {orderedRecipes.map((recipe) => (
+        <SortableRecipe
+          key={recipe.id}
+          recipe={recipe}
+          onDelete={onDelete}
+          onEdit={onEdit}
+          showControls={showControls}
+        />
+      ))}
+    </Row>
+  );
+
+  // Drag & Drop chỉ dùng khi có controls
+  return showControls ? (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <div>
-        <h2>Recipes</h2>
-        <Row>
-          {recipes.map((recipe) => (
-            <Col md={4} className="mb-4" key={recipe.id}>
-              <RecipeImageItem recipe={recipe} />
-            </Col>
-          ))}
-        </Row>
-      </div>
+      <SortableContext items={orderedRecipes.map((r) => r.id)} strategy={verticalListSortingStrategy}>
+        {content}
+      </SortableContext>
     </DndContext>
+  ) : (
+    content
   );
 }
 

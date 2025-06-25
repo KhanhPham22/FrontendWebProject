@@ -17,7 +17,8 @@ function FavoriteButton({ recipeId }) {
     <Button
       variant={isFavorite ? 'danger' : 'outline-danger'}
       onClick={toggleFavorite}
-      className="d-flex align-items-center mb-2"
+      className="d-flex align-items-center"
+
     >
       {isFavorite ? <BsHeartFill className="me-2" /> : <BsHeart className="me-2" />}
       {isFavorite ? 'Remove Favorite' : 'Add Favorite'}

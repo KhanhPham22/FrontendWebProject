@@ -8,7 +8,7 @@ function RatingStars({ recipeId, rating }) {
   const handleRating = async (star) => {
     setUserRating(star);
     try {
-      // Giả sử API lưu trữ rating trung bình, gửi rating mới để cập nhật
+      // Update only the rating field
       await updateRecipe(recipeId, { rating: star });
     } catch (error) {
       alert('Failed to submit rating');

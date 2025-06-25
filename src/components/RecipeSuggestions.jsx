@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import RecipeImageItem from '../components/recipe/RecipeImageItem'; // Import RecipeImageItem
 import { fetchRecipes } from '../services/api';
 
 function RecipeSuggestions() {
@@ -21,15 +21,7 @@ function RecipeSuggestions() {
       <Row>
         {suggestions.map((recipe) => (
           <Col md={4} key={recipe.id} className="mb-4">
-            <Card>
-              <Card.Body>
-                <Card.Title>{recipe.title}</Card.Title>
-                <Card.Text>Rating: {recipe.rating.toFixed(1)}</Card.Text>
-                <Link to={`/recipe/${recipe.id}`} className="btn btn-primary">
-                  View Details
-                </Link>
-              </Card.Body>
-            </Card>
+            <RecipeImageItem recipe={recipe} />
           </Col>
         ))}
       </Row>

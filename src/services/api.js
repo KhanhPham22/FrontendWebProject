@@ -22,10 +22,18 @@ export const postRecipe = async (recipe) => {
   }
 };
 
-export const updateRecipe = async (id, recipe) => {
+export const updateRecipe = async (id, updates) => {
   try {
-    const response = await axios.put(`${API_URL}/recipes/${id}`, recipe);
-    return response.data;
+    // Fetch the current recipe
+    const response = await axios.get(`${API_URL}/recipes/${id}`);
+    const currentRecipe = response.data;
+
+    // Merge the existing recipe with the new updates
+    const updatedRecipe = { ...currentRecipe, ...updates };
+
+    // Use PATCH to update only the changed fields
+    const putResponse = await axios.patch(`${API_URL}/recipes/${id}`, updatedRecipe);
+    return putResponse.data;
   } catch (error) {
     console.error('Error updating recipe:', error);
     throw error;
