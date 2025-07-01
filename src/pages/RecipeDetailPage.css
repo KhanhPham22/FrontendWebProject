@@ -1,0 +1,94 @@
+.recipe-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px; /* Increased top padding to account for Navbar */
+}
+
+.recipe-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.recipe-image {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+}
+
+
+
+
+
+.recipe-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.recipe-description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.ingredient-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.ingredient-list li {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-instructions {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.recipe-sidebar button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .recipe-detail-container {
+    padding: 20px 15px; /* Reduced padding for mobile */
+  }
+
+  .recipe-image {
+    height: 200px;
+  }
+
+  .recipe-title {
+    font-size: 1.5rem;
+  }
+
+  .recipe-sidebar {
+    margin-top: 1.5rem;
+    align-items: stretch;
+  }
+}

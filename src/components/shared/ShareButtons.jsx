@@ -1,36 +1,41 @@
-import { Button } from 'react-bootstrap';
-import { BsTwitter, BsFacebook, BsLink } from 'react-icons/bs';
+import { Button, Toast } from 'react-bootstrap';
+import { useState } from 'react';
 
 function ShareButtons({ recipe }) {
-  const shareUrl = `${window.location.origin}/recipe/${recipe.id}`;
-  const title = encodeURIComponent(recipe.title);
+  const [showToast, setShowToast] = useState(false);
+  const recipeUrl = `${window.location.origin}/recipe/${recipe.id}`;
 
-  const copyLink = () => {
-    navigator.clipboard.writeText(shareUrl);
-    alert('Link copied to clipboard!');
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(recipeUrl).then(() => {
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+    });
   };
 
   return (
-    <div className="d-flex mb-3">
+    <div className="mt-3">
       <Button
         variant="outline-primary"
-        href={`https://twitter.com/intent/tweet?text=${title}&url=${shareUrl}`}
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(recipeUrl)}&text=${encodeURIComponent(recipe.title)}`}
         target="_blank"
         className="me-2"
       >
-        <BsTwitter /> Share on Twitter
+        Share on Twitter
       </Button>
       <Button
         variant="outline-primary"
-        href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(recipeUrl)}`}
         target="_blank"
         className="me-2"
       >
-        <BsFacebook /> Share on Facebook
+        Share on Facebook
       </Button>
-      <Button variant="outline-secondary" onClick={copyLink}>
-        <BsLink /> Copy Link
+      <Button variant="outline-secondary" onClick={copyToClipboard}>
+        Copy Link
       </Button>
+      <Toast show={showToast} onClose={() => setShowToast(false)} delay={2000} autohide>
+        <Toast.Body>Link copied to clipboard!</Toast.Body>
+      </Toast>
     </div>
   );
 }

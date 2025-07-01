@@ -1,8 +1,9 @@
-import { Card, Row, Col, ListGroup, Image } from 'react-bootstrap';
+import { Card, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import ProfileEditForm from '../components/profile/ProfileEditForm';
+import RecipeImageItem from '../components/recipe/RecipeImageItem';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useState, useEffect } from 'react';
 import { fetchRecipes } from '../services/api';
@@ -113,28 +114,13 @@ function ProfilePage() {
               <Card.Body>
                 <Card.Title>Created Recipes</Card.Title>
                 {createdRecipes.length > 0 ? (
-                  <ListGroup variant="flush">
+                  <Row xs={1} md={2} lg={3} className="g-4">
                     {createdRecipes.map((recipe) => (
-                      <ListGroup.Item key={recipe.id} className="recipe-item">
-                        <div className="d-flex align-items-center">
-                          {recipe.image && (
-                            <Image
-                              src={`/images/${recipe.image}`}
-                              alt={recipe.title}
-                              className="recipe-image me-3"
-                              onError={(e) => (e.target.src = '/images/placeholder.jpg')}
-                            />
-                          )}
-                          <div>
-                            <Link to={`/recipe/${recipe.id}`}>
-                              <h6>{recipe.title}</h6>
-                            </Link>
-                            <p className="text-muted">{recipe.description}</p>
-                          </div>
-                        </div>
-                      </ListGroup.Item>
+                      <Col key={recipe.id}>
+                        <RecipeImageItem recipe={recipe} />
+                      </Col>
                     ))}
-                  </ListGroup>
+                  </Row>
                 ) : (
                   <p>No recipes created yet.</p>
                 )}
@@ -149,28 +135,13 @@ function ProfilePage() {
               <Card.Body>
                 <Card.Title>Favorite Recipes</Card.Title>
                 {favoriteRecipes.length > 0 ? (
-                  <ListGroup variant="flush">
+                  <Row xs={1} md={2} lg={3} className="g-4">
                     {favoriteRecipes.map((recipe) => (
-                      <ListGroup.Item key={recipe.id} className="recipe-item">
-                        <div className="d-flex align-items-center">
-                          {recipe.image && (
-                            <Image
-                              src={`/images/${recipe.image}`}
-                              alt={recipe.title}
-                              className="recipe-image me-3"
-                              onError={(e) => (e.target.src = '/images/placeholder.jpg')}
-                            />
-                          )}
-                          <div>
-                            <Link to={`/recipe/${recipe.id}`}>
-                              <h6>{recipe.title}</h6>
-                            </Link>
-                            <p className="text-muted">{recipe.description}</p>
-                          </div>
-                        </div>
-                      </ListGroup.Item>
+                      <Col key={recipe.id}>
+                        <RecipeImageItem recipe={recipe} />
+                      </Col>
                     ))}
-                  </ListGroup>
+                  </Row>
                 ) : (
                   <p>No favorite recipes yet.</p>
                 )}

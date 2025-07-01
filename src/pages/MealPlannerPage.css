@@ -1,0 +1,68 @@
+/* MealPlannerPage.css */
+.meal-planner-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--bs-heading-color);
+}
+
+.recipe-offcanvas {
+  width: 500px !important;
+}
+
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.remove-button {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.drop-target {
+  min-height: 150px;
+  background-color: #f8f9fa;
+  border: 2px dashed #ccc;
+  transition: background-color 0.2s ease, transform 0.1s ease; /* Thêm transition cho transform */
+}
+
+.drop-target.bg-light {
+  background-color: #e9ecef;
+  transform: scale(1.02); /* Hiệu ứng phóng to nhẹ khi hover */
+}
+
+.drop-target .card-img {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card.dragging {
+  opacity: 0.7; /* Giảm độ mờ khi kéo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng khi kéo */
+}
+
+@media (max-width: 768px) {
+  .recipe-offcanvas {
+    width: 100% !important;
+  }
+
+  .controls-container {
+    flex-direction: column;
+  }
+}

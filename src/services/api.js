@@ -52,7 +52,7 @@ export const deleteRecipe = async (id) => {
 export const postComment = async (recipeId, comment) => {
   try {
     const recipes = await fetchRecipes();
-    const recipe = recipes.find((r) => r.id === parseInt(recipeId));
+    const recipe = recipes.find((r) => r.id.toString() === recipeId.toString());
     if (!recipe) throw new Error('Recipe not found');
     const updatedComments = [...(recipe.comments || []), comment];
     await updateRecipe(recipeId, { ...recipe, comments: updatedComments });

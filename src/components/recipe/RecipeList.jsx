@@ -66,17 +66,12 @@ function RecipeList({ recipes, onDelete, onEdit, showControls = false }) {
     setRecipeOrder(newOrder);
   };
 
-  const orderedRecipes = recipeOrder
-    .map((id) => recipes.find((recipe) => recipe.id === id))
-    .filter((recipe) => recipe);
-  console.log(
-    "🔍 Ordered recipes to render:",
-    orderedRecipes.map((r) => ({
-      id: r.id,
-      title: r.title,
-      image: r.image,
-    }))
-  );
+  // Use orderedRecipes only when showControls is true
+  const orderedRecipes = showControls
+    ? recipeOrder
+        .map((id) => recipes.find((recipe) => recipe.id === id))
+        .filter((recipe) => recipe)
+    : recipes; // Use original recipes order when showControls is false
 
   const content = (
     <div className="recipes-grid">
@@ -102,7 +97,7 @@ function RecipeList({ recipes, onDelete, onEdit, showControls = false }) {
   return showControls ? (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <SortableContext
-        items={orderedRecipes.map((r) => r.id)}
+        items={recipeOrder}
         strategy={verticalListSortingStrategy}
       >
         {content}
