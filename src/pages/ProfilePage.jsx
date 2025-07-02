@@ -1,4 +1,4 @@
-import { Card, Row, Col, Image } from 'react-bootstrap';
+import { Card, Row, Col, Image, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
@@ -23,19 +23,19 @@ function ProfilePage() {
       try {
         setLoading(true);
         const recipes = await fetchRecipes();
-        // Lọc các recipe do người dùng tạo
+        // Filter recipes created by the user
         const userRecipes = recipes.filter(
           (recipe) => recipe.username === user?.username
         );
         setCreatedRecipes(userRecipes);
 
-        // Lọc các recipe yêu thích dựa trên favorites trong localStorage
+        // Filter favorite recipes based on localStorage
         const favRecipes = recipes.filter((recipe) =>
           favorites.includes(recipe.id)
         );
         setFavoriteRecipes(favRecipes);
 
-        // Tính tổng số comment đã post
+        // Calculate total comments posted
         const totalComments = recipes.reduce((acc, recipe) => {
           return (
             acc +
@@ -79,7 +79,7 @@ function ProfilePage() {
       <div className="profile-page mt-4">
         <h2>Profile</h2>
         <Row>
-          {/* Thông tin người dùng */}
+          {/* User info */}
           <Col md={4}>
             <Card className="user-info-card">
               <Card.Body>
@@ -96,18 +96,30 @@ function ProfilePage() {
                   <Card.Title>{user.username}</Card.Title>
                 </div>
                 <Card.Text>Email: {user.email}</Card.Text>
+                <Card.Text>
+                  Dietary Preferences:{' '}
+                  {user.dietaryPreferences && user.dietaryPreferences.length > 0 ? (
+                    user.dietaryPreferences.map((pref, index) => (
+                      <Badge key={index} bg="secondary" className="me-1">
+                        {pref}
+                      </Badge>
+                    ))
+                  ) : (
+                    'None'
+                  )}
+                </Card.Text>
                 <Card.Text>Favorite Recipes: {favoriteRecipes.length}</Card.Text>
                 <Card.Text>Created Recipes: {createdRecipes.length}</Card.Text>
                 <Card.Text>Comments Posted: {commentsPosted}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          {/* Form chỉnh sửa profile */}
+          {/* Profile edit form */}
           <Col md={8}>
             <ProfileEditForm />
           </Col>
         </Row>
-        {/* Danh sách recipe đã tạo */}
+        {/* Created recipes */}
         <Row className="mt-4">
           <Col>
             <Card>
@@ -128,7 +140,7 @@ function ProfilePage() {
             </Card>
           </Col>
         </Row>
-        {/* Danh sách recipe yêu thích */}
+        {/* Favorite recipes */}
         <Row className="mt-4">
           <Col>
             <Card>

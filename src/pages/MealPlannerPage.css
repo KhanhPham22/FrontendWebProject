@@ -1,6 +1,6 @@
 /* MealPlannerPage.css */
 .meal-planner-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -12,7 +12,7 @@ h2 {
 }
 
 .recipe-offcanvas {
-  width: 500px !important;
+  width: 400px !important;
 }
 
 .controls-container {
@@ -24,8 +24,8 @@ h2 {
 
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .remove-button {
@@ -34,27 +34,40 @@ h2 {
 }
 
 .drop-target {
-  min-height: 150px;
+  min-height: 120px;
   background-color: #f8f9fa;
   border: 2px dashed #ccc;
-  transition: background-color 0.2s ease, transform 0.1s ease; /* Thêm transition cho transform */
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .drop-target.bg-light {
   background-color: #e9ecef;
-  transform: scale(1.02); /* Hiệu ứng phóng to nhẹ khi hover */
+  transform: scale(1.02);
 }
 
 .drop-target .card-img {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 40px;
+  max-height: 40px;
   object-fit: cover;
   border-radius: 4px;
 }
 
 .card.dragging {
-  opacity: 0.7; /* Giảm độ mờ khi kéo */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng khi kéo */
+  opacity: 0.7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scrollable-calendar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-calendar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.scrollable-calendar::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }
 
 @media (max-width: 768px) {
@@ -64,5 +77,12 @@ h2 {
 
   .controls-container {
     flex-direction: column;
+  }
+
+  .scrollable-calendar {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 600px; /* Limit height for vertical scrolling on mobile */
   }
 }

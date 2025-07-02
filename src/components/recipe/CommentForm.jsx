@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { postComment } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 
-function CommentForm({ recipeId }) {
+function CommentForm({ recipeId, onCommentPosted }) {
   const [comment, setComment] = useState('');
   const [error, setError] = useState('');
   const { user } = useAuth();
@@ -19,12 +19,18 @@ function CommentForm({ recipeId }) {
       return;
     }
     try {
-      await postComment(recipeId, {
+      const newComment = {
+        id: `temp-${Date.now()}`, // Temporary ID for optimistic update
         username: user.username,
         text: comment,
         timestamp: new Date().toISOString(),
-      });
+      };
+      // Post to server
+      await postComment(recipeId, newComment);
+      // Notify parent component with the new comment
+      onCommentPosted(newComment);
       setComment('');
+      setError('');
     } catch (error) {
       setError('Failed to post comment');
     }

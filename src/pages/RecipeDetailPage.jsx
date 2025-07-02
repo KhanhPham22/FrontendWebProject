@@ -8,7 +8,7 @@ import CommentForm from '../components/recipe/CommentForm';
 import CommentList from '../components/recipe/CommentList';
 import ShareButtons from '../components/shared/ShareButtons';
 import NutritionInfo from '../components/shared/NutritionInfo';
-import Navbar from '../components/Navbar'; // Import Navbar
+import Navbar from '../components/Navbar';
 import './RecipeDetailPage.css';
 
 function RecipeDetailPage() {
@@ -46,12 +46,20 @@ function RecipeDetailPage() {
     }
   };
 
+  const handleCommentPosted = (newComment) => {
+    // Optimistically update the UI
+    setRecipe((prev) => ({
+      ...prev,
+      comments: [...(prev.comments || []), newComment],
+    }));
+  };
+
   if (error) return <div className="alert alert-danger">{error}</div>;
   if (!recipe) return <div>Loading...</div>;
 
   return (
     <>
-      <Navbar /> {/* Add Navbar at the top */}
+      <Navbar />
       <div className="recipe-detail-container">
         <Card className="recipe-card">
           <Card.Img
@@ -92,7 +100,7 @@ function RecipeDetailPage() {
             </Row>
           </Card.Body>
         </Card>
-        <CommentForm recipeId={recipe.id} onCommentPosted={loadRecipe} />
+        <CommentForm recipeId={recipe.id} onCommentPosted={handleCommentPosted} />
         <CommentList comments={recipe.comments} />
       </div>
     </>

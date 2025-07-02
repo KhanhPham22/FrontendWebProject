@@ -444,7 +444,7 @@
       "cookingTime": 10,
       "servings": 1,
       "category": "Breakfast",
-      "rating": 4.4,
+      "rating": 2,
       "image": "Smoothie Bowl.jpg",
       "nutritionalInfo": {
         "calories": 350,
@@ -457,6 +457,12 @@
           "username": "SmoothieFan",
           "text": "Great energy boost!",
           "timestamp": "2025-06-04T08:20:00Z"
+        },
+        {
+          "id": "temp-1751372262505",
+          "username": "baycho",
+          "text": "check",
+          "timestamp": "2025-07-01T12:17:42.505Z"
         }
       ]
     },
@@ -492,6 +498,11 @@
           "username": "baycho",
           "text": "hi",
           "timestamp": "2025-06-26T04:22:14.403Z"
+        },
+        {
+          "username": "baycho",
+          "text": "hi em",
+          "timestamp": "2025-07-01T12:13:58.237Z"
         }
       ]
     },
@@ -530,6 +541,54 @@
           "timestamp": "2025-06-30T07:04:18.712Z"
         }
       ]
+    },
+    {
+      "id": "c32d",
+      "title": "Burger",
+      "description": "beef burger",
+      "ingredients": [
+        "beef",
+        "bread",
+        "salad",
+        "egg"
+      ],
+      "instructions": "dd",
+      "cookingTime": "15",
+      "servings": 1,
+      "category": "Breakfast",
+      "image": "Burger.jpg",
+      "username": "baycho",
+      "rating": 0,
+      "nutritionalInfo": {
+        "calories": 0,
+        "protein": 0,
+        "fat": 0,
+        "carbs": 0
+      },
+      "comments": []
+    },
+    {
+      "id": "1751456734205",
+      "title": "Chicken",
+      "description": "sss",
+      "ingredients": [
+        "Meat",
+        "Oil"
+      ],
+      "instructions": "Fried",
+      "cookingTime": "15",
+      "servings": 1,
+      "category": "Dinner",
+      "image": "Chicken.jpg",
+      "username": "baycho",
+      "rating": 0,
+      "nutritionalInfo": {
+        "calories": 0,
+        "protein": 0,
+        "fat": 0,
+        "carbs": 0
+      },
+      "comments": []
     }
   ],
   "users": [
@@ -546,8 +605,11 @@
       "id": "a97e",
       "username": "baycho",
       "email": "baycho@gmail.com",
-      "password": "CR7123456",
-      "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlQ1hWE7iYhcOeyDtFnIUbVOdFYbGRMi3GeL-mdQZCv-NFrJWndOCVmLYSKQcqiwmdboFMO-H3sSeWfJxFbJc9hXF7fP3amdBenF7-bd0HUg"
+      "password": "",
+      "profilePicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlQ1hWE7iYhcOeyDtFnIUbVOdFYbGRMi3GeL-mdQZCv-NFrJWndOCVmLYSKQcqiwmdboFMO-H3sSeWfJxFbJc9hXF7fP3amdBenF7-bd0HUg",
+      "dietaryPreferences": [
+        "Low-Calorie"
+      ]
     }
   ]
 }

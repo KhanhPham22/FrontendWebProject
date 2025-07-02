@@ -18,13 +18,19 @@ function RecipeForm({ onRecipeAdded, onRecipeUpdated, editRecipe }) {
   const [imageFile, setImageFile] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (editRecipe) {
       setRecipe({
         ...editRecipe,
-        ingredients: editRecipe.ingredients || [''],
+        ingredients: Array.isArray(editRecipe.ingredients) ? editRecipe.ingredients : [''],
+        cookingTime: editRecipe.cookingTime || 0,
+        servings: editRecipe.servings || 1,
+        category: editRecipe.category || 'Breakfast',
+        image: editRecipe.image || '/assets/images/placeholder.jpg'
       });
+      setImageFile(null);
     }
   }, [editRecipe]);
 
@@ -47,18 +53,22 @@ function RecipeForm({ onRecipeAdded, onRecipeUpdated, editRecipe }) {
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
-      setRecipe({ ...recipe, image: file.name });
+      setRecipe({ ...recipe, image: `/assets/images/${file.name}` });
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     if (!user) {
       alert('Please login to create a recipe');
+      setIsSubmitting(false);
       return;
     }
     if (!recipe.title) {
       alert('Title is required');
+      setIsSubmitting(false);
       return;
     }
     try {
@@ -76,16 +86,30 @@ function RecipeForm({ onRecipeAdded, onRecipeUpdated, editRecipe }) {
       };
 
       if (editRecipe) {
-        await updateRecipe(editRecipe.id, recipeData);
+        await updateRecipe(editRecipe.id, recipeData, imageFile);
         onRecipeUpdated({ ...recipeData, id: editRecipe.id });
       } else {
-        const response = await postRecipe(recipeData);
+        const response = await postRecipe(recipeData, imageFile);
         onRecipeAdded(response);
       }
+      // Reset form after successful submission
+      setRecipe({
+        title: '',
+        description: '',
+        ingredients: [''],
+        instructions: '',
+        cookingTime: 0,
+        servings: 1,
+        category: 'Breakfast',
+        image: '',
+      });
+      setImageFile(null);
       navigate('/recipemanagement');
     } catch (error) {
-      alert('Failed to save recipe');
+      alert('Failed to save recipe: ' + (error.message || 'Unknown error'));
       console.error('Error saving recipe:', error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -184,15 +208,19 @@ function RecipeForm({ onRecipeAdded, onRecipeUpdated, editRecipe }) {
           {recipe.image && (
             <div className="mt-2">
               <img
-                src={`/assets/images/${encodeURIComponent(recipe.image)}`}
+                src={recipe.image}
                 alt="Preview"
                 style={{ maxWidth: '100px', maxHeight: '100px' }}
+                onError={(e) => {
+                  console.log(`Image load failed for ${recipe.image}, falling back to placeholder`);
+                  e.target.src = '/assets/images/placeholder.jpg';
+                }}
               />
             </div>
           )}
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={isSubmitting}>
           {editRecipe ? 'Update Recipe' : 'Save Recipe'}
         </Button>
       </Form>

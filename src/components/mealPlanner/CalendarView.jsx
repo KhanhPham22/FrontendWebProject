@@ -1,5 +1,4 @@
-// CalendarView.jsx
-import { useMemo } from "react"; // Changed: Import useMemo
+import { useMemo } from "react";
 import { useDroppable } from "@dnd-kit/core";
 import {
   useSortable,
@@ -8,7 +7,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Card, Row, Col, Button, Image } from "react-bootstrap";
-import { useDrag } from "../../context/DragContext";
 
 function SortableRecipe({ recipeId, recipes, day, handleRemove }) {
   const recipe = recipes.find((r) => r.id === recipeId);
@@ -42,8 +40,8 @@ function SortableRecipe({ recipeId, recipes, day, handleRemove }) {
             e.target.src = "/assets/images/placeholder.jpg";
           }}
           style={{
-            width: "50px",
-            height: "50px",
+            width: "40px",
+            height: "40px",
             objectFit: "cover",
             marginRight: "10px",
           }}
@@ -67,53 +65,48 @@ function SortableRecipe({ recipeId, recipes, day, handleRemove }) {
 }
 
 function DropBox({
-  id,
   day,
   recipes,
   mealPlan,
   handleRemove,
-  handleAssign,
-  handleDragStart,
 }) {
   const { setNodeRef, isOver } = useDroppable({
-    id,
+    id: day,
     data: { day },
   });
-  const { draggedRecipe } = useDrag();
 
   return (
     <Card
-      ref={setNodeRef}
       className={`drop-target ${isOver ? "bg-light" : ""}`}
       style={{
-        minHeight: "150px",
+        minHeight: "120px",
         padding: "10px",
-        cursor: draggedRecipe ? "pointer" : "default",
+        width: "200px", /* Fixed width for each day card */
       }}
-      onClick={() => draggedRecipe && handleAssign(draggedRecipe, day)}
-      onDragStart={handleDragStart}
     >
-      <Card.Header>{day}</Card.Header>
-      <Card.Body>
-        {mealPlan[day]?.length > 0 ? (
-          <SortableContext
-            items={mealPlan[day]}
-            strategy={verticalListSortingStrategy}
-          >
-            {mealPlan[day].map((recipeId) => (
-              <SortableRecipe
-                key={recipeId}
-                recipeId={recipeId}
-                recipes={recipes}
-                day={day}
-                handleRemove={handleRemove}
-              />
-            ))}
-          </SortableContext>
-        ) : (
-          <p className="text-muted">Drop or click to add recipes</p>
-        )}
-      </Card.Body>
+      <div ref={setNodeRef} style={{ minHeight: "100%" }}>
+        <Card.Header>{day}</Card.Header>
+        <Card.Body>
+          {mealPlan[day]?.length > 0 ? (
+            <SortableContext
+              items={mealPlan[day]}
+              strategy={verticalListSortingStrategy}
+            >
+              {mealPlan[day].map((recipeId) => (
+                <SortableRecipe
+                  key={recipeId}
+                  recipeId={recipeId}
+                  recipes={recipes}
+                  day={day}
+                  handleRemove={handleRemove}
+                />
+              ))}
+            </SortableContext>
+          ) : (
+            <p className="text-muted">Drop recipes here</p>
+          )}
+        </Card.Body>
+      </div>
     </Card>
   );
 }
@@ -122,11 +115,7 @@ function CalendarView({
   mealPlan,
   recipes,
   handleRemove,
-  handleAssign,
-  handleDragStart,
-  handleDragEnd,
 }) {
-  // Changed: Use useMemo instead of useState and useEffect
   const nutritionSummary = useMemo(() => {
     const summary = { calories: 0, protein: 0, fat: 0, carbs: 0 };
     Object.values(mealPlan)
@@ -161,7 +150,7 @@ function CalendarView({
   return (
     <div>
       <Row className="mb-4">
-        <Col md={12}>
+        <Col xs={12}>
           <Card>
             <Card.Body>
               <Card.Title>Weekly Nutrition Summary</Card.Title>
@@ -173,21 +162,27 @@ function CalendarView({
           </Card>
         </Col>
       </Row>
-      <Row>
+      <div
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          gap: "15px",
+          padding: "10px",
+          flexWrap: "nowrap",
+        }}
+        className="scrollable-calendar"
+      >
         {days.map((day) => (
-          <Col md={4} key={day} className="mb-4">
+          <div key={day} style={{ flex: "0 0 auto" }}>
             <DropBox
-              id={`day-${day}`}
               day={day}
               recipes={recipes}
               mealPlan={mealPlan}
               handleRemove={handleRemove}
-              handleAssign={handleAssign}
-              handleDragStart={handleDragStart}
             />
-          </Col>
+          </div>
         ))}
-      </Row>
+      </div>
     </div>
   );
 }

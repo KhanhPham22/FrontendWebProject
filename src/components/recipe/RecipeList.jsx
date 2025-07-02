@@ -29,8 +29,8 @@ function SortableRecipe({ recipe, onDelete, onEdit, showControls }) {
           <RecipeImageItem
             recipe={recipe}
             showControls={showControls}
-            onEdit={onEdit}
-            onDelete={onDelete}
+            onEdit={() => onEdit(recipe)}
+            onDelete={() => onDelete(recipe)}
           />
         </div>
       </Col>

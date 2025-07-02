@@ -1,11 +1,21 @@
-// RecipeImageItem.jsx
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RatingStars from "./RatingStars";
 import FavoriteButton from "./FavoriteButton";
 
 function RecipeImageItem({ recipe, showControls = false, onEdit, onDelete }) {
-  const imageUrl = `/assets/images/${encodeURIComponent(recipe.image || "placeholder.jpg")}`;
+  const imageUrl = recipe.image && recipe.image.startsWith('http')
+    ? recipe.image
+    : `/assets/images/${encodeURIComponent(recipe.image || "placeholder.jpg")}`;
+
+  const handleEditClick = () => {
+    console.log('Edit button clicked for recipe:', JSON.stringify(recipe, null, 2));
+    if (onEdit) {
+      onEdit(recipe);
+    } else {
+      console.warn('onEdit prop is not provided');
+    }
+  };
 
   return (
     <Card className="h-100 shadow-sm w-100">
@@ -15,7 +25,7 @@ function RecipeImageItem({ recipe, showControls = false, onEdit, onDelete }) {
         alt={recipe.title}
         onError={(e) => {
           console.log(`Image load failed for ${imageUrl}, falling back to placeholder`);
-          e.target.src = "/assets/images/placeholder.jpg"; // Fallback
+          e.target.src = "/assets/images/placeholder.jpg";
         }}
         style={{ height: "250px", objectFit: "cover" }}
       />
@@ -34,13 +44,16 @@ function RecipeImageItem({ recipe, showControls = false, onEdit, onDelete }) {
             <>
               <Button
                 variant="outline-primary"
-                onClick={() => onEdit(recipe)}
+                onClick={handleEditClick}
               >
                 Edit
               </Button>
               <Button
                 variant="outline-danger"
-                onClick={() => onDelete(recipe)}
+                onClick={() => {
+                  console.log('Delete button clicked for recipe:', recipe);
+                  onDelete(recipe);
+                }}
               >
                 Delete
               </Button>

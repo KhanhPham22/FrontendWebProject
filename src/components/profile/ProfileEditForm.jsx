@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext';
-import { Card } from 'react-bootstrap';
-
+import { updateUser } from '../../services/api';
 
 function ProfileEditForm() {
-  const { user, register } = useAuth();
+  const { user, setUser } = useAuth();
   const [formData, setFormData] = useState({
     username: user?.username || '',
     email: user?.email || '',
     profilePicture: user?.profilePicture || '',
-    dietaryPreferences: user?.dietaryPreferences || [],
+    dietaryPreferences: Array.isArray(user?.dietaryPreferences) ? user.dietaryPreferences : [],
   });
 
   const handleChange = (e) => {
@@ -20,18 +19,44 @@ function ProfileEditForm() {
 
   const handlePreferenceChange = (e) => {
     const { value, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      dietaryPreferences: checked
+    setFormData((prev) => {
+      const updatedPreferences = checked
         ? [...prev.dietaryPreferences, value]
-        : prev.dietaryPreferences.filter((pref) => pref !== value),
-    }));
+        : prev.dietaryPreferences.filter((pref) => pref !== value);
+      return { ...prev, dietaryPreferences: updatedPreferences };
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    register({ ...user, ...formData });
-    alert('Profile updated!');
+    if (!user || !user.id) {
+      alert('No user logged in or user ID missing. Please log in again.');
+      return;
+    }
+    if (!formData.username || !formData.email) {
+      alert('Username and email are required.');
+      return;
+    }
+    try {
+      const updatedUserData = {
+        username: formData.username,
+        email: formData.email,
+        profilePicture: formData.profilePicture,
+        dietaryPreferences: formData.dietaryPreferences,
+      };
+      console.log('Submitting updated user:', updatedUserData);
+      const refreshedUser = await updateUser(user.id, updatedUserData);
+      setUser({ ...user, ...refreshedUser });
+      alert('Profile updated successfully!');
+    } catch (error) {
+      console.error('Error updating profile:', {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
+        url: `${error.config?.url}`
+      });
+      alert(`Failed to update profile: ${error.response?.data?.message || error.message}`);
+    }
   };
 
   return (
